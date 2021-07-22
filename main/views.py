@@ -6,8 +6,8 @@ from .forms import CreateNewList
 # Create your views here.
 
 
-def index(response, name):
-    ls = TodoList.objects.get(name=name)
+def index(response, id):
+    ls = TodoList.objects.get(id=id)
 
     # Lo sgte 
     if response.method == "POST":

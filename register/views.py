@@ -9,7 +9,7 @@ def register(response):
         if form.is_valid():
             form.save()
             
-        return redirect("/home")
+        return redirect("/") # Una vez registrado lo redirige a la pagina de inicio en este caso.
     else:
         form = RegisterForm()
 
