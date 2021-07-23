@@ -47,7 +47,13 @@ def create(response):
             n = form.cleaned_data["name"] # Desencripta los datos
             t = TodoList(name=n) # Crea un objeto TodoList
             t.save() # Lo guarda en la db
-        return HttpResponseRedirect("/%s" %t.name) # redirigimos a la pagina de la lista creada
+            response.user.todolist.add(t) #Esto crea una nueva TodoList pero ahora dentro de un usuario.
+
+        return HttpResponseRedirect("/%i" %t.id) # redirigimos a la pagina de la lista creada
     else:    
         form = CreateNewList()
     return render(response, "main/create.html", {"form": form})
+
+
+def view(response):
+    return render(response, "main/view.html", {})
